@@ -18,15 +18,32 @@ public class Team {
     @Column(name = "team_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long teamId;
-    @Column String name;
-    @Column int games;
-    @Column int win;
-    @Column int draw;
-    @Column int lose;
-    @Column int balls;
-    @Column int points;
 
-    @Column(name = "click_count")
+    @Column
+    String name;
+
+    @Column
     @ColumnDefault("0")
-    int clickCount;
+    int games;
+
+    @Column
+    @ColumnDefault("0")
+    int win;
+
+    @Column
+    @ColumnDefault("0")
+    int draw;
+
+
+    @Column
+    @ColumnDefault("0")
+    int lose;
+
+    @Column
+    @ColumnDefault("0")
+    int balls;
+
+    @ColumnDefault("0")
+    @Column
+    int points;
 }

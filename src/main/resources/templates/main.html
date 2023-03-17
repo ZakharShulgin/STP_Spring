@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html lang="ru" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8">
+  <title>Турнирная таблица</title>
+  <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+<h1>Турнирная таблица</h1>
+<table id="table">
+    <thead>
+      <tr>
+        <th>№ <button src="images/sort.png" alt="" style="vertical-align:middle" onclick="sort(0)">sort</button></th>
+        <th>Команда <button src="images/sort.png" alt="" style="vertical-align:middle" onclick="sort(1)">sort</button></th>
+        <th></th>
+        <th>И</th>
+        <th></th>
+        <th></th>
+        <th>В</th>
+        <th></th>
+        <th></th>
+        <th>Н</th>
+        <th></th>
+        <th></th>
+        <th>П</th>
+        <th></th>
+        <th></th>
+        <th>МЗ</th>
+        <th></th>
+        <th></th>
+        <th>О <button src="images/sort.png" alt="" style="vertical-align:middle" onclick="sort(18)">sort</button></th>
+        <th></th>
+      </tr>
+    </thead>
+  <tbody>
+      <tr th:each="team : ${teams}">
+        <td th:text="${team.teamId}"></td>
+        <td th:text="${team.name}"></td>
+        <td><button type="button" th:onclick="|window.location.href='@{/incrementGame/{id}(id=${team.teamId})}'|">+1</button></td>
+        <td th:text="${team.games}"></td>
+        <td><button type="button" th:onclick="|window.location.href='@{/decrementGame/{id}(id=${team.teamId})}'|">-1</button></td>
+        <td><button type="button" th:onclick="|window.location.href='@{/incrementWin/{id}(id=${team.teamId})}'|">+1</button></td>
+        <td th:text="${team.win}"></td>
+        <td><button type="button" th:onclick="|window.location.href='@{/decrementWin/{id}(id=${team.teamId})}'|">-1</button></td>
+        <td><button type="button" th:onclick="|window.location.href='@{/incrementDraw/{id}(id=${team.teamId})}'|">+1</button></td>
+        <td th:text="${team.draw}"></td>
+        <td><button type="button" th:onclick="|window.location.href='@{/decrementDraw/{id}(id=${team.teamId})}'|">-1</button></td>
+        <td><button type="button" th:onclick="|window.location.href='@{/incrementLose/{id}(id=${team.teamId})}'|">+1</button></td>
+        <td th:text="${team.lose}"></td>
+        <td><button type="button" th:onclick="|window.location.href='@{/decrementLose/{id}(id=${team.teamId})}'|">-1</button></td>
+        <td><button type="button" th:onclick="|window.location.href='@{/incrementBall/{id}(id=${team.teamId})}'|">+1</button></td>
+        <td th:text="${team.balls}"></td>
+        <td><button type="button" th:onclick="|window.location.href='@{/decrementBall/{id}(id=${team.teamId})}'|">-1</button></td>
+        <td><button type="button" th:onclick="|window.location.href='@{/incrementPoint/{id}(id=${team.teamId})}'|">+1</button></td>
+        <td th:text="${team.points}"></td>
+        <td><button type="button" th:onclick="|window.location.href='@{/decrementPoint/{id}(id=${team.teamId})}'|">-1</button></td>
+      </tr>
+  </tbody>
+</table>
+<script src="sort.js"></script>
+</body>
+</html>
